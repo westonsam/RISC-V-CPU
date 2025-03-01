@@ -1,0 +1,570 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Fri Feb 28 15:22:45 2025
+# Process ID: 35620
+# Current directory: C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.runs/synth_1
+# Command line: vivado.exe -log OTTER_Wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source OTTER_Wrapper.tcl
+# Log file: C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.runs/synth_1/OTTER_Wrapper.vds
+# Journal file: C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.runs/synth_1\vivado.jou
+# Running On: spain, OS: Windows, CPU Frequency: 2688 MHz, CPU Physical cores: 14, Host memory: 34029 MB
+#-----------------------------------------------------------
+source OTTER_Wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 432.883 ; gain = 164.398
+Command: read_checkpoint -auto_incremental -incremental C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/utils_1/imports/synth_1/Otter_TB.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/utils_1/imports/synth_1/Otter_TB.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top OTTER_Wrapper -part xc7a35ticpg236-1L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Device 21-403] Loading part xc7a35ticpg236-1L
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 28056
+INFO: [Synth 8-11241] undeclared symbol 'memERR', assumed default net type 'wire' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:377]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1250.637 ; gain = 410.227
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'OTTER_Wrapper' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/OTTER_Wrapper_v1_02.sv:17]
+INFO: [Synth 8-6157] synthesizing module 'OTTER_MCU' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:43]
+INFO: [Synth 8-6157] synthesizing module 'PC' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/PC.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'PC_MUX' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/PC_MUX.sv:9]
+INFO: [Synth 8-6155] done synthesizing module 'PC_MUX' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/PC_MUX.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'PC_REG' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/PC_REG.sv:9]
+INFO: [Synth 8-6155] done synthesizing module 'PC_REG' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/PC_REG.sv:9]
+INFO: [Synth 8-6155] done synthesizing module 'PC' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/PC.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'Hazard_Detection' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/new/Hazard_Detection.sv:10]
+INFO: [Synth 8-6155] done synthesizing module 'Hazard_Detection' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/new/Hazard_Detection.sv:10]
+INFO: [Synth 8-6157] synthesizing module 'CU_DCDR' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CU_DCDR.sv:10]
+INFO: [Synth 8-226] default block is never used [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CU_DCDR.sv:81]
+INFO: [Synth 8-6155] done synthesizing module 'CU_DCDR' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CU_DCDR.sv:10]
+INFO: [Synth 8-6157] synthesizing module 'ImmediateGenerator' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/ImmediateGenerator.sv:9]
+INFO: [Synth 8-6155] done synthesizing module 'ImmediateGenerator' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/ImmediateGenerator.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'REG_FILE' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/REG_FILE.sv:10]
+INFO: [Synth 8-6155] done synthesizing module 'REG_FILE' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/REG_FILE.sv:10]
+INFO: [Synth 8-6157] synthesizing module 'ALU' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/ALU.sv:9]
+INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/ALU.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'BCG' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/BCG.sv:9]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/BCG.sv:36]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/BCG.sv:27]
+INFO: [Synth 8-6155] done synthesizing module 'BCG' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/BCG.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'BAG' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/BAG.sv:9]
+INFO: [Synth 8-6155] done synthesizing module 'BAG' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/BAG.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'FourMux' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/FourMux.sv:9]
+INFO: [Synth 8-226] default block is never used [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/FourMux.sv:20]
+INFO: [Synth 8-6155] done synthesizing module 'FourMux' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/FourMux.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'TwoMux' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/TwoMux.sv:9]
+INFO: [Synth 8-6155] done synthesizing module 'TwoMux' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/TwoMux.sv:9]
+INFO: [Synth 8-6157] synthesizing module 'OTTER_mem_byte' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/Downloads/bram_dualport_pipeline.sv:97]
+INFO: [Synth 8-3876] $readmem data file 'TestAllWithHazards.mem' is read successfully [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/Downloads/bram_dualport_pipeline.sv:136]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/Downloads/bram_dualport_pipeline.sv:210]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/Downloads/bram_dualport_pipeline.sv:196]
+INFO: [Synth 8-6155] done synthesizing module 'OTTER_mem_byte' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/Downloads/bram_dualport_pipeline.sv:97]
+INFO: [Synth 8-6155] done synthesizing module 'OTTER_MCU' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:43]
+WARNING: [Synth 8-7071] port 'INTR' of module 'OTTER_MCU' is unconnected for instance 'CPU' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/OTTER_Wrapper_v1_02.sv:48]
+WARNING: [Synth 8-7023] instance 'CPU' of module 'OTTER_MCU' has 7 connections declared, but only 6 given [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/OTTER_Wrapper_v1_02.sv:48]
+INFO: [Synth 8-6157] synthesizing module 'SevSegDisp' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/SevSegDisp.sv:21]
+INFO: [Synth 8-6157] synthesizing module 'BCD' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/new/BCD.sv:18]
+INFO: [Synth 8-6155] done synthesizing module 'BCD' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/new/BCD.sv:18]
+INFO: [Synth 8-6157] synthesizing module 'CathodeDriver' [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CathodeDriver.sv:22]
+INFO: [Synth 8-226] default block is never used [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CathodeDriver.sv:46]
+INFO: [Synth 8-226] default block is never used [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CathodeDriver.sv:49]
+INFO: [Synth 8-226] default block is never used [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CathodeDriver.sv:71]
+INFO: [Synth 8-226] default block is never used [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CathodeDriver.sv:93]
+INFO: [Synth 8-226] default block is never used [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CathodeDriver.sv:115]
+INFO: [Synth 8-6155] done synthesizing module 'CathodeDriver' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/CathodeDriver.sv:22]
+INFO: [Synth 8-6155] done synthesizing module 'SevSegDisp' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/SevSegDisp.sv:21]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/OTTER_Wrapper_v1_02.sv:78]
+INFO: [Synth 8-6155] done synthesizing module 'OTTER_Wrapper' (0#1) [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OTTER_Diego_Curiel/OTTER_Wrapper_v1_02.sv:17]
+WARNING: [Synth 8-6014] Unused sequential element j_reg was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/Downloads/bram_dualport_pipeline.sv:154]
+WARNING: [Synth 8-6014] Unused sequential element de_ex_inst_reg[pc] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:172]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[opcode] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[rs1_addr] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[rs2_addr] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[rs1_used] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[rs2_used] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[alu_fun] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[pc] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[U_immed] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[I_immed] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[S_immed] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[J_type] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[B_type] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element ex_mem_inst_reg[rs1] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:178]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[opcode] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[rs1_addr] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[rs2_addr] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[rs1_used] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[rs2_used] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[alu_fun] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[memWrite] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[memRead2] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[pc] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[mem_type] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[U_immed] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[I_immed] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[S_immed] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[J_type] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[B_type] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-6014] Unused sequential element mem_wb_inst_reg[rs1] was removed.  [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:179]
+WARNING: [Synth 8-3848] Net br_eq in module/entity OTTER_MCU does not have driver. [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:66]
+WARNING: [Synth 8-3848] Net br_lt in module/entity OTTER_MCU does not have driver. [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:66]
+WARNING: [Synth 8-3848] Net br_ltu in module/entity OTTER_MCU does not have driver. [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/sources_1/imports/OtterPipelineFiles/otter_mcu_pipeline_template_v2.sv:66]
+WARNING: [Synth 8-7129] Port BR_EQ in module CU_DCDR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BR_LT in module CU_DCDR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BR_LTU in module CU_DCDR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port memRead2 in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[6] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[5] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[4] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[3] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[2] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[1] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[0] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[31] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[30] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[29] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[28] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[27] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[26] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[25] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[24] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[23] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[22] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[21] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[20] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[19] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[18] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[17] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[16] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[15] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[14] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[13] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[12] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[11] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[10] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[9] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[8] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[7] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[6] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[5] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[4] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[3] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[2] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[1] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[0] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[31] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[30] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[29] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[28] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[27] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[26] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[25] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[24] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[23] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[22] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[21] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[20] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[19] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[18] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[17] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[16] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[15] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[14] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[13] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[12] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[11] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[10] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[9] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[8] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[7] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[6] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[5] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[4] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[3] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[2] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[1] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEPC[0] in module PC_MUX is either unconnected or has no load
+WARNING: [Synth 8-7129] Port INTR in module OTTER_MCU is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1356.656 ; gain = 516.246
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1356.656 ; gain = 516.246
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1356.656 ; gain = 516.246
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1356.656 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/constrs_1/imports/OTTER_Diego_Curiel/Basys3_Master.xdc]
+Finished Parsing XDC File [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/constrs_1/imports/OTTER_Diego_Curiel/Basys3_Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/constrs_1/imports/OTTER_Diego_Curiel/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/OTTER_Wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/OTTER_Wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1458.918 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1458.918 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35ticpg236-1L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Preparing Guide Design
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6895] The reference checkpoint C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.srcs/utils_1/imports/synth_1/Otter_TB.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "OTTER_mem_byte:/memory_reg"
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: no
+
+   Reason for not running incremental synthesis : 
+
+
+INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 5     
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input   20 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 34    
+	   2 Input    3 Bit       Adders := 9     
+	   2 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 22    
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 5     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 6     
+	                1 Bit    Registers := 19    
++---RAMs : 
+	             512K Bit	(16384 X 32 bit)          RAMs := 1     
+	             1024 Bit	(32 X 32 bit)          RAMs := 1     
++---Muxes : 
+	   4 Input   32 Bit        Muxes := 11    
+	   2 Input   32 Bit        Muxes := 7     
+	   9 Input   32 Bit        Muxes := 2     
+	   7 Input   32 Bit        Muxes := 2     
+	   6 Input   32 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 1     
+	  19 Input    8 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 2     
+	   4 Input    5 Bit        Muxes := 1     
+	   9 Input    4 Bit        Muxes := 2     
+	   4 Input    4 Bit        Muxes := 3     
+	   2 Input    4 Bit        Muxes := 30    
+	   2 Input    3 Bit        Muxes := 4     
+	   2 Input    2 Bit        Muxes := 6     
+	   4 Input    2 Bit        Muxes := 3     
+	   9 Input    2 Bit        Muxes := 2     
+	   9 Input    1 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 5     
+	   4 Input    1 Bit        Muxes := 1     
+	   3 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+INFO: [Synth 8-3971] The signal "CPU/RegFile/ram_reg" was recognized as a true dual port RAM template.
+WARNING: [Synth 8-7129] Port memRead2 in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[6] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[5] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[4] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[3] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[2] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[1] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port opcode[0] in module Hazard_Detection is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[31] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[30] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[29] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[28] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[27] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[26] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[25] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[24] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[23] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[22] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[21] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[20] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[19] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[18] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[17] in module PC is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MTVEC[16] in module PC is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "CPU/Memory/memory_reg"
+INFO: [Synth 8-3971] The signal "CPU/RegFile/ram_reg" was recognized as a true dual port RAM template.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|CPU/Memory  | memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|CPU/Memory  | memory_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_9 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_9 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_10 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_10 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_11 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_11 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_12 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_12 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_13 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_13 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_14 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_14 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/Memory/memory_reg_bram_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/RegFile/ram_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance CPU/RegFile/ram_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |CARRY4   |    77|
+|3     |LUT1     |    31|
+|4     |LUT2     |   242|
+|5     |LUT3     |   122|
+|6     |LUT4     |   224|
+|7     |LUT5     |   241|
+|8     |LUT6     |   799|
+|9     |MUXF7    |   135|
+|10    |MUXF8    |    64|
+|11    |RAMB18E1 |     2|
+|12    |RAMB36E1 |    16|
+|17    |FDRE     |   522|
+|18    |FDSE     |     4|
+|19    |IBUF     |    18|
+|20    |OBUF     |    28|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1458.918 ; gain = 618.508
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 1 critical warnings and 74 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:24 . Memory (MB): peak = 1458.918 ; gain = 516.246
+Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1458.918 ; gain = 618.508
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1470.172 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 294 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 2 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1473.867 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 1a01331c
+INFO: [Common 17-83] Releasing license: Synthesis
+137 Infos, 137 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 1473.867 ; gain = 1017.141
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.runs/synth_1/OTTER_Wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file OTTER_Wrapper_utilization_synth.rpt -pb OTTER_Wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Feb 28 15:23:22 2025...
