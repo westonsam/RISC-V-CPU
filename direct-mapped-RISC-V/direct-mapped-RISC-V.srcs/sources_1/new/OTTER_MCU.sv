@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Engineer:  S. Weston & Phillipe Bakhirev
+// Engineer:  Samuel Weston & Phillipe Bakhirev
 // Module Name: PIPELINED_OTTER_CPU WITH HAZARD HANDLING AND DATA FORWARDING
 // Create Date: 02/27/2025
 //////////////////////////////////////////////////////////////////////////////////
@@ -80,10 +80,13 @@ module OTTER_MCU(input CLK,
     logic   [31:0] mem_wb_next_pc;
     logic   [31:0] mem_wb_aluRes;
 
-    
     // HAZARDS
     logic          stall, stalled, stalled2, flush, flushed;
-
+    
+    // CACHE
+    wire [31:0] w0, w1, w2, w3, w4, w5, w6, w7;
+    wire cacheHit, cacheMiss, fsmRST, update, pcStall;
+    wire [31:0] cacheIM, memoryIM;
               
 //==== Instruction Fetch ===========================================
        
@@ -101,21 +104,21 @@ module OTTER_MCU(input CLK,
        .PC_OUT_INC (next_pc)
     );
 
-    always_comb begin 
-      if (stall == 1'b0) begin
-            pcWrite     <= 1'b1;
-            memRead1    <= 1'b1;
+    always_comb begin
+        if (stall == 1'b1 || pcStall == 1'b1) begin
+            pcWrite         <= 1'b0;
+            memRead1        <= 1'b0;
         end
         else begin
-            pcWrite     <= 1'b0;
-            memRead1    <= 1'b0;
+            if_de_pc        <= pc;
+            if_de_next_pc   <= next_pc;
+            pcWrite         <= 1'b1;
+            memRead1        <= 1'b1;
         end
     end  
     
     always_ff @(posedge CLK) begin
-        if(stall == 0) begin
-            if_de_pc        <= pc;
-            if_de_next_pc   <= next_pc; 
+        if(stall == 1'b0) begin
             stalled         <= 1'b0;
         end
         else if(stall == 1) begin
@@ -255,7 +258,7 @@ end
             de_ex_pc        <= 0; 
             flushed         <= 0;
         end     
-        else if(stall) begin
+        else if(stall || pcStall) begin
             de_ex_inst      <= de_ex_inst;      
             de_ex_rs2       <= de_ex_rs2;
             de_ex_pc        <= de_ex_pc;	       
@@ -356,20 +359,62 @@ end
     end
 
 //==== Memory ======================================================
-
+     
+    // Insantiate 8 Word Cache Loader
+    InstructionMem OneTo8Inst(
+        .a(pc), //address
+        .w0(w0),
+        .w1(w1),
+        .w2(w2),
+        .w3(w3),
+        .w4(w4), 
+        .w5(w5),
+        .w6(w6),
+        .w7(w7)
+    );
+    
+    // Instantiate Cache FSM
+    CacheFSM CacheFSM(
+        .hit(cacheHit), 
+        .miss(cacheMiss), 
+        .CLK(CLK), 
+        .RST(fsmRST), 
+        .update(update), 
+        .pc_stall(pcStall)
+    );
+    
+    // Instantiate Main Cache
+    DirectMapCache Cache(
+            .PC(pc),
+            .CLK(CLK),
+            .update(update),
+            .w0(w0),
+            .w1(w1),
+            .w2(w2), 
+            .w3(w3),
+            .w4(w4), 
+            .w5(w5),
+            .w6(w6), 
+            .w7(w7),
+            .rd(IR), 
+            .hit(cacheHit), 
+            .miss(cacheMiss)
+    );
+    
+    // Instantiate Main Memory
     OTTER_mem_byte Memory (
         .MEM_CLK    (CLK),
         .MEM_READ1  (memRead1),
         .MEM_READ2  (ex_mem_inst.memRead2),
         .MEM_WRITE2 (ex_mem_inst.memWrite),        
-        .MEM_ADDR1  (pc),
+        .MEM_ADDR1  (),                     // Disconnected
         .MEM_ADDR2  (ex_mem_aluRes),          
         .MEM_DIN2   (ex_mem_HazardBout),
         .MEM_SIZE   (ex_mem_inst.mem_type[1:0]),     
         .MEM_SIGN   (ex_mem_inst.mem_type[2]),          
         .IO_IN      (IOBUS_IN),
         .IO_WR      (IOBUS_WR),
-        .MEM_DOUT1  (IR),
+        .MEM_DOUT1  (memoryIM),
         .MEM_DOUT2  (mem_data),
         .ERR        (memERR)
     );     

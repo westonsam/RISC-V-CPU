@@ -4,9 +4,12 @@ sv xil_defaultlib  \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/BAG.sv" \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/BCG.sv" \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/CU_DCDR.sv" \
+"../../../../direct-mapped-RISC-V.srcs/sources_1/new/CacheFSM.sv" \
+"../../../../direct-mapped-RISC-V.srcs/sources_1/new/DirectMapCache.sv" \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/FourMUX.sv" \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/Hazard_Detection.sv" \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/ImmediateGenerator.sv" \
+"../../../../direct-mapped-RISC-V.srcs/sources_1/new/InstructionMem.sv" \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv" \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/PC.sv" \
 "../../../../direct-mapped-RISC-V.srcs/sources_1/new/PC_MUX.sv" \

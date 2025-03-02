@@ -5,16 +5,16 @@ Running: C:/Xilinx/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 3 for port 'de_ex_rf_wr_sel' [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv:191]
-WARNING: [VRFC 10-3091] actual bit length 31 differs from formal bit length 32 for port 'THREE' [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv:315]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 3 for port 'de_ex_rf_wr_sel' [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv:194]
+WARNING: [VRFC 10-3091] actual bit length 31 differs from formal bit length 32 for port 'THREE' [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv:318]
 WARNING: [VRFC 10-5021] port 'INTR' is not connected on this instance [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/TestBench.sv:13]
-WARNING: [VRFC 10-3091] actual bit length 31 differs from formal bit length 32 for port 'THREE' [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv:325]
+WARNING: [VRFC 10-3091] actual bit length 31 differs from formal bit length 32 for port 'THREE' [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv:328]
 Completed static elaboration
 Starting simulation data flow analysis
-WARNING: [VRFC 10-2649] an enum variable may only be assigned the same enum typed variable or one of its values [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv:138]
+WARNING: [VRFC 10-2649] an enum variable may only be assigned the same enum typed variable or one of its values [C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/OTTER_MCU.sv:141]
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling package xil_defaultlib.$unit_ALU_sv_2194528308
+Compiling package xil_defaultlib.$unit_ALU_sv_2700498513
 Compiling module xil_defaultlib.PC_MUX
 Compiling module xil_defaultlib.PC_REG
 Compiling module xil_defaultlib.PC
@@ -27,6 +27,9 @@ Compiling module xil_defaultlib.BCG
 Compiling module xil_defaultlib.BAG
 Compiling module xil_defaultlib.FourMux
 Compiling module xil_defaultlib.TwoMux
+Compiling module xil_defaultlib.InstructionMem
+Compiling module xil_defaultlib.CacheFSM
+Compiling module xil_defaultlib.DirectMapCache_default
 Compiling module xil_defaultlib.OTTER_mem_byte
 Compiling module xil_defaultlib.OTTER_MCU
 Compiling module xil_defaultlib.Otter_TB
