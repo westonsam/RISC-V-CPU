@@ -47,12 +47,13 @@ module OTTER_MCU(input CLK,
 );           
 
     wire    [31:0] next_pc, aluBin, aluAin, aluResult, rfIn, mem_data;
-    wire    [31:0] IR, HazardAout, HazardBout;
+    wire    [31:0] HazardAout, HazardBout;
     wire    [31:0] jalr, branch, jump;
     wire    [2:0]  PC_SEL;
     wire    [1:0]  opB_sel;
     wire           opA_sel;
     wire           BR_EN;
+    logic [31:0] IR;
 
     // Instruction Fetch
     instr_t        de_ex_inst, de_inst, ex_mem_inst, mem_wb_inst;
@@ -86,8 +87,10 @@ module OTTER_MCU(input CLK,
     // CACHE
     wire [31:0] w0, w1, w2, w3, w4, w5, w6, w7;
     wire cacheHit, cacheMiss, fsmRST, update, pcStall;
-    wire [31:0] cacheIM, memoryIM;
+    wire [31:0] cacheIM, memoryIM, imOut;
               
+//    assign pcWrite = (!stall && (!pcStall || (BR_EN) ) );    //dont update the PC while we are stalling for new DOUT1
+
 //==== Instruction Fetch ===========================================
        
     PC PC  (
@@ -103,26 +106,47 @@ module OTTER_MCU(input CLK,
        .PC_OUT     (pc),
        .PC_OUT_INC (next_pc)
     );
-
     always_comb begin
-        if (stall == 1'b1 || pcStall == 1'b1) begin
-            pcWrite         <= 1'b0;
-            memRead1        <= 1'b0;
-        end
-        else begin
+        if (!stall && (!pcStall || (BR_EN) )) begin
+            pcWrite <= 1'b1;
             if_de_pc        <= pc;
             if_de_next_pc   <= next_pc;
-            pcWrite         <= 1'b1;
-            memRead1        <= 1'b1;
         end
-    end  
+        else begin
+            pcWrite <= 1'b0;
+            if_de_pc <= if_de_pc;
+            if_de_next_pc <= if_de_next_pc; 
+        end
+    end
+//    always_comb begin
+//        if (BR_EN) begin
+//            IR <= 8'h00000013;
+//        end
+//        else begin
+//            IR <= imOut;
+//        end
+//    end
+//    always_comb begin
+//        if (stall) begin
+//            pcWrite         <= 1'b0;
+//            memRead1        <= 1'b0;
+//        end
+//        else begin
+//            if_de_pc        <= pc;
+//            if_de_next_pc   <= next_pc;
+//            pcWrite         <= 1'b1;
+//            memRead1        <= 1'b1;
+//        end
+//    end  
     
     always_ff @(posedge CLK) begin
-        if(stall == 1'b0) begin
+        if(!stall) begin
             stalled         <= 1'b0;
+            memRead1        <= 1'b1;
         end
-        else if(stall == 1) begin
+        else if(stall) begin
             stalled         <=1'b1;
+            memRead1        <= 1'b0;
         end   
     end
 
@@ -258,7 +282,7 @@ end
             de_ex_pc        <= 0; 
             flushed         <= 0;
         end     
-        else if(stall || pcStall) begin
+        else if(stall || (pcStall && !BR_EN)) begin
             de_ex_inst      <= de_ex_inst;      
             de_ex_rs2       <= de_ex_rs2;
             de_ex_pc        <= de_ex_pc;	       

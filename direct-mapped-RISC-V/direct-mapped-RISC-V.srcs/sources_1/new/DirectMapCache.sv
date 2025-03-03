@@ -60,7 +60,7 @@ module DirectMapCache(
         if(hit) rd = data[index][pc_offset];
     end
     
-    always_ff @(negedge CLK) begin
+    always_ff @(posedge CLK) begin // Was Negedge
         if(update) begin
             data[index][0]      <= w0;
             data[index][1]      <= w1;
