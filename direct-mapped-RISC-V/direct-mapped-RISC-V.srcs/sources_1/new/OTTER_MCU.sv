@@ -106,47 +106,36 @@ module OTTER_MCU(input CLK,
        .PC_OUT     (pc),
        .PC_OUT_INC (next_pc)
     );
-    always_comb begin
-        if (!stall && (!pcStall || (BR_EN) )) begin
-            pcWrite <= 1'b1;
-            if_de_pc        <= pc;
-            if_de_next_pc   <= next_pc;
-        end
-        else begin
-            pcWrite <= 1'b0;
-            if_de_pc <= if_de_pc;
-            if_de_next_pc <= if_de_next_pc; 
-        end
-    end
 //    always_comb begin
-//        if (BR_EN) begin
-//            IR <= 8'h00000013;
-//        end
-//        else begin
-//            IR <= imOut;
-//        end
-//    end
-//    always_comb begin
-//        if (stall) begin
-//            pcWrite         <= 1'b0;
-//            memRead1        <= 1'b0;
-//        end
-//        else begin
+//        if (!stall && (!pcStall || (BR_EN) )) begin
+//            pcWrite <= 1'b1;
 //            if_de_pc        <= pc;
 //            if_de_next_pc   <= next_pc;
-//            pcWrite         <= 1'b1;
-//            memRead1        <= 1'b1;
 //        end
-//    end  
+//        else begin
+//            pcWrite <= 1'b0;
+//            if_de_pc <= if_de_pc;
+//            if_de_next_pc <= if_de_next_pc; 
+//        end
+//    end
+
+    always_ff @(posedge CLK) begin
+        if (stall || pcStall) begin
+            pcWrite         <= 1'b0;
+        end
+        else begin
+            if_de_pc        <= pc;
+            if_de_next_pc   <= next_pc;
+            pcWrite         <= 1'b1;
+        end
+    end  
     
     always_ff @(posedge CLK) begin
         if(!stall) begin
             stalled         <= 1'b0;
-            memRead1        <= 1'b1;
         end
         else if(stall) begin
             stalled         <=1'b1;
-            memRead1        <= 1'b0;
         end   
     end
 
@@ -428,7 +417,7 @@ end
     // Instantiate Main Memory
     OTTER_mem_byte Memory (
         .MEM_CLK    (CLK),
-        .MEM_READ1  (memRead1),
+        .MEM_READ1  (),
         .MEM_READ2  (ex_mem_inst.memRead2),
         .MEM_WRITE2 (ex_mem_inst.memWrite),        
         .MEM_ADDR1  (),                     // Disconnected
@@ -438,7 +427,7 @@ end
         .MEM_SIGN   (ex_mem_inst.mem_type[2]),          
         .IO_IN      (IOBUS_IN),
         .IO_WR      (IOBUS_WR),
-        .MEM_DOUT1  (memoryIM),
+        .MEM_DOUT1  (),
         .MEM_DOUT2  (mem_data),
         .ERR        (memERR)
     );     

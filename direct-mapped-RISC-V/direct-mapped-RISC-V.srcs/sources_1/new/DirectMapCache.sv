@@ -55,10 +55,10 @@ module DirectMapCache(
     assign hit = (validity && (cache_tag == pc_tag));
     assign miss = !hit;
     
-    always_comb begin
-        rd = 32'h00000013; //nop
-        if(hit) rd = data[index][pc_offset];
-    end
+//    always_comb begin
+//        rd = 32'h00000013; //nop
+//        if(hit) rd = data[index][pc_offset];
+//    end
     
     always_ff @(posedge CLK) begin // Was Negedge
         if(update) begin
@@ -72,5 +72,7 @@ module DirectMapCache(
             data[index][7]      <= w7;
             valid_bits[index]   <= 1'b1;
         end
+        rd = 32'h00000013; //nop
+        if(hit) rd = data[index][pc_offset];
     end
 endmodule
