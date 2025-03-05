@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="171.117 ns"></ZoomStartTime>
-      <ZoomEndTime time="404.418 ns"></ZoomEndTime>
-      <Cursor1Time time="322.317 ns"></Cursor1Time>
+      <ZoomStartTime time="2,753.900 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,850.501 ns"></ZoomEndTime>
+      <Cursor1Time time="2,770.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="263"></NameColumnWidth>
-      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+      <ValueColumnWidth column_width="138"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="20" />
    <wvobject fp_name="/Otter_TB/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -41,6 +41,10 @@
       <obj_property name="ElementShortName">IR[31:0]</obj_property>
       <obj_property name="ObjectShortName">IR[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/CacheFSM/PS" type="array">
+      <obj_property name="ElementShortName">PS[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PS[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/Otter_TB/CPU/OPCODE" type="array">
       <obj_property name="ElementShortName">OPCODE[6:0]</obj_property>
       <obj_property name="ObjectShortName">OPCODE[6:0]</obj_property>
@@ -48,6 +52,10 @@
    <wvobject fp_name="/Otter_TB/CPU/pcStall" type="logic">
       <obj_property name="ElementShortName">pcStall</obj_property>
       <obj_property name="ObjectShortName">pcStall</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Cache/miss" type="logic">
+      <obj_property name="ElementShortName">miss</obj_property>
+      <obj_property name="ObjectShortName">miss</obj_property>
    </wvobject>
    <wvobject fp_name="/Otter_TB/CPU/stall" type="logic">
       <obj_property name="ElementShortName">stall</obj_property>
@@ -58,6 +66,38 @@
       <obj_property name="ObjectShortName">stalled</obj_property>
    </wvobject>
    <wvobject fp_name="/Otter_TB/CPU/stalled2" type="logic">
+      <obj_property name="ElementShortName">stalled2</obj_property>
+      <obj_property name="ObjectShortName">stalled2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/ForwardA" type="array">
+      <obj_property name="ElementShortName">ForwardA[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ForwardA[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/ForwardB" type="array">
+      <obj_property name="ElementShortName">ForwardB[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ForwardB[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Hazard_Detection_Unit/rs1_e" type="array">
+      <obj_property name="ElementShortName">rs1_e[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_e[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Hazard_Detection_Unit/ex_mem_rd" type="array">
+      <obj_property name="ElementShortName">ex_mem_rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Hazard_Detection_Unit/ex_mem_regWrite" type="logic">
+      <obj_property name="ElementShortName">ex_mem_regWrite</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_regWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Hazard_Detection_Unit/de_ex_rs1_used" type="logic">
+      <obj_property name="ElementShortName">de_ex_rs1_used</obj_property>
+      <obj_property name="ObjectShortName">de_ex_rs1_used</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Hazard_Detection_Unit/mem_rd_used" type="logic">
+      <obj_property name="ElementShortName">mem_rd_used</obj_property>
+      <obj_property name="ObjectShortName">mem_rd_used</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Hazard_Detection_Unit/stalled2" type="logic">
       <obj_property name="ElementShortName">stalled2</obj_property>
       <obj_property name="ObjectShortName">stalled2</obj_property>
    </wvobject>

@@ -52,6 +52,7 @@ module DirectMapCache(
     assign cache_tag = tags[index];
     assign pc_offset = PC[4:2];
     assign pc_tag = PC[31:9];
+ 
     assign hit = (validity && (cache_tag == pc_tag));
     assign miss = !hit;
     
@@ -70,8 +71,11 @@ module DirectMapCache(
             data[index][5]      <= w5;
             data[index][6]      <= w6;
             data[index][7]      <= w7;
+            tags[index]         <= pc_tag;
             valid_bits[index]   <= 1'b1;
         end
+//        assign hit = (validity && (cache_tag == pc_tag));
+//        assign miss = !hit;
         rd = 32'h00000013; //nop
         if(hit) rd = data[index][pc_offset];
     end
