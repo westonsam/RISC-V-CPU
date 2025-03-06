@@ -5,7 +5,7 @@
 // Create Date: 01/15/2025
 //////////////////////////////////////////////////////////////////////////////////
 
-module Otter_TB();
+module Otter_TB2();
     // Simulation Test Bench
     logic clk, intr, rst, wr;
     logic [31:0] in, iobus_out, iobus_addr;

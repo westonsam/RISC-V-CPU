@@ -1,0 +1,60 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Sun Mar  2 17:27:03 2025
+# Process ID: 30896
+# Current directory: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9640 C:\Users\sam\Documents\RISC-V-CPU\direct-mapped-RISC-V\direct-mapped-RISC-V.xpr
+# Log file: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/vivado.log
+# Journal file: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V\vivado.jou
+# Running On: spain, OS: Windows, CPU Frequency: 2688 MHz, CPU Physical cores: 14, Host memory: 34029 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg
+source Otter_TB.tcl
+run 20 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/stall}} 
+relaunch_sim
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg}
+relaunch_sim
+relaunch_sim
+restart
+run 20 us
+relaunch_sim
+run 20 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/flush}} 
+restart
+run 20 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/flushed}} 
+restart
+run 20 us
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg}
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/Cache/index}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/Cache/pc_offset}} 
+relaunch_sim
+restart
+run 20 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/Cache/data[15][4]}} 
+restart
+run 20 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/w4}} 
+restart
+run 20 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/Cache/data[15][4]}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB/CPU/Cache/data[15][5]}} 
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg}
+close_sim

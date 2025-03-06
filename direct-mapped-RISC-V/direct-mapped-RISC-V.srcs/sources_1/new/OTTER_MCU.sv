@@ -128,10 +128,7 @@ module OTTER_MCU(input CLK,
     end
     
     always_ff @(posedge CLK) begin
-        if (stall || pcStall) begin
-//            pcWrite         <= 1'b0;
-        end
-        else begin
+        if (!stall) begin
             if_de_pc        <= pc;
             if_de_next_pc   <= next_pc;
 //            pcWrite         <= 1'b1;
@@ -139,10 +136,10 @@ module OTTER_MCU(input CLK,
     end  
     
     always_ff @(posedge CLK) begin
-        if(!stall || !pcStall) begin
+        if(!stall) begin
             stalled         <= 1'b0;
         end
-        else if(stall || pcStall) begin
+        else if(stall) begin
             stalled         <=1'b1;
         end   
     end
@@ -210,6 +207,7 @@ end
         .ForwardA           (ForwardA),
         .ForwardB           (ForwardB),
         .stall              (stall),
+        .pcStall            (pcStall),
         .flush              (flush),
         .opcode             (de_inst.opcode),
         .de_ex_rf_wr_sel    (de_ex_inst.rf_wr_sel)
@@ -279,7 +277,16 @@ end
             de_ex_pc        <= 0; 
             flushed         <= 0;
         end     
-        else if(stall || pcStall) begin
+//        else if (pcStall && !stalled) begin
+//            de_ex_inst      <= de_inst;
+//            de_ex_rs2       <= rs2;
+             
+//            de_ex_opA_sel   <= opA_sel;
+//            de_ex_opB_sel   <= opB_sel;	       
+//            de_ex_next_pc   <= if_de_next_pc;
+//            de_ex_pc        <= if_de_pc;
+//        end
+        else if(stall) begin
             de_ex_inst      <= de_ex_inst;      
             de_ex_rs2       <= de_ex_rs2;
             de_ex_pc        <= de_ex_pc;	       
