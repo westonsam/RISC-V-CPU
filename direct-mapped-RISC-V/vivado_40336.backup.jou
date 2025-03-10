@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Sun Mar  9 14:08:00 2025
+# Process ID: 40336
+# Current directory: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6588 C:\Users\sam\Documents\RISC-V-CPU\direct-mapped-RISC-V\direct-mapped-RISC-V.xpr
+# Log file: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/vivado.log
+# Journal file: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V\vivado.jou
+# Running On: spain, OS: Windows, CPU Frequency: 2688 MHz, CPU Physical cores: 14, Host memory: 34029 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg
+source Otter_TB2.tcl
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg}
+close_sim

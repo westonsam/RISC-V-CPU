@@ -50,8 +50,8 @@ module OTTER_MCU(input CLK,
     wire    [31:0] HazardAout, HazardBout;
     wire    [31:0] jalr, branch, jump;
     wire    [2:0]  PC_SEL;
-    wire    [1:0]  opB_sel;
-    wire           opA_sel;
+    logic    [1:0]  opB_sel;
+    logic           opA_sel;
     wire           BR_EN;
     logic [31:0] IR;
 
@@ -82,15 +82,16 @@ module OTTER_MCU(input CLK,
     logic   [31:0] mem_wb_aluRes;
 
     // HAZARDS
-    logic          stall, stalled, stalled2, flush, flushed;
+    logic          stall, stalled, stalled2, flush_if_de, flush_de_ex, if_flushed, if_de_flushed, de_ex_flushed;
     
     // CACHE
     wire [31:0] w0, w1, w2, w3, w4, w5, w6, w7;
-    wire cacheHit, cacheMiss, fsmRST, update, pcStall;
+    wire cacheHit, cacheMiss, fsmRST, update;
     wire [31:0] cacheIM, memoryIM, imOut;
+    logic pcStall, pcStall2;
+    
+    logic [31:0] de_ir, de_ex_ir;
               
-//    assign pcWrite = (!stall && (!pcStall || (BR_EN) ) );    //dont update the PC while we are stalling for new DOUT1
-
 //==== Instruction Fetch ===========================================
        
     PC PC  (
@@ -106,43 +107,27 @@ module OTTER_MCU(input CLK,
        .PC_OUT     (pc),
        .PC_OUT_INC (next_pc)
     );
-//    always_comb begin
-//        if (!stall && (!pcStall || (BR_EN) )) begin
-//            pcWrite <= 1'b1;
-//            if_de_pc        <= pc;
-//            if_de_next_pc   <= next_pc;
-//        end
-//        else begin
-//            pcWrite <= 1'b0;
-//            if_de_pc <= if_de_pc;
-//            if_de_next_pc <= if_de_next_pc; 
-//        end
-//    end
-    always_comb begin
-        if (stall || pcStall) begin
-            pcWrite         <= 1'b0;
-        end
-        else begin
-            pcWrite         <= 1'b1;
-        end
-    end
+    
+    assign pcWrite = ~(stall || pcStall);
     
     always_ff @(posedge CLK) begin
-        if (!stall) begin
+        if (flush_if_de) if_flushed = 1;
+        else if_flushed = 0;
+    end
+     
+    always_ff @(posedge CLK) begin
+        if (!stall || !pcStall) begin
             if_de_pc        <= pc;
+            if_de_flushed   <= if_flushed;
             if_de_next_pc   <= next_pc;
-//            pcWrite         <= 1'b1;
+            de_ir           <= IR;
         end
-    end  
+    end
     
     always_ff @(posedge CLK) begin
-        if(!stall) begin
-            stalled         <= 1'b0;
-        end
-        else if(stall) begin
-            stalled         <=1'b1;
-        end   
+        pcStall2 <= pcStall;
     end
+    
 
     always_ff @(posedge CLK) begin
         if (stalled) begin
@@ -151,7 +136,7 @@ module OTTER_MCU(input CLK,
         else begin
             stalled2 <=1'b0;
         end
-end    
+    end   
 
 //==== Decode ===========================================
     
@@ -179,7 +164,11 @@ end
     assign de_inst.rd_used=     de_inst.rd_addr   != 0    
                                 && de_inst.opcode != BRANCH 
                                 && de_inst.opcode != STORE;
-                                
+    logic de_load, de_ex_load, ex_mem_load;
+    
+    always_comb begin
+        if (de_inst.opcode == LOAD) de_load = 1;
+    end
     // Instantiate Hazard Unit
     Hazard_Detection Hazard_Detection_Unit(
         // RS1 AND RS2                      
@@ -208,7 +197,10 @@ end
         .ForwardB           (ForwardB),
         .stall              (stall),
         .pcStall            (pcStall),
-        .flush              (flush),
+        .opB_sel            (opB_sel),
+        .ex_mem_load        (ex_mem_load),
+        .flush_if_de        (flush_if_de),
+        .flush_de_ex        (flush_de_ex),
         .opcode             (de_inst.opcode),
         .de_ex_rf_wr_sel    (de_ex_inst.rf_wr_sel)
     );
@@ -217,9 +209,9 @@ end
  
     // Instantiate Decoder
     CU_DCDR CU_DCDR (
-        .IR_30      (IR[30]),
-        .IR_OPCODE  (OPCODE),
-        .IR_FUNCT   (IR[14:12]),
+        .IR_30      (de_ir[30]),
+        .IR_OPCODE  (de_inst.opcode),
+        .IR_FUNCT   (de_ir[14:12]),
         .BR_EQ      (br_eq),       
         .BR_LT      (br_lt),
         .BR_LTU     (br_ltu),
@@ -234,7 +226,7 @@ end
     
     // Instantiate Immediate Generator
     ImmediateGenerator ImmGen(
-        .IR     (IR[31:7]),
+        .IR     (de_ir[31:7]),
         .U_TYPE (de_inst.U_immed),
         .I_TYPE (de_inst.I_immed),
         .S_TYPE (de_inst.S_immed),
@@ -254,57 +246,41 @@ end
         .RS2    (rs2)
     );
 
-	always_ff @ (posedge CLK) begin
-	    if(flush) begin
-            de_ex_inst      <= 0;
-
-            de_ex_opA_sel   <= 0;
-            de_ex_opB_sel   <= 0;
-            de_ex_rs2       <= 0;
-               
-            de_ex_next_pc   <= 0;
-            de_ex_pc        <= 0;
-            flushed         <= 1;
-	    end
-	    else if(flushed) begin
-            de_ex_inst      <= 0;
-               
-            de_ex_opA_sel   <= 0;
-            de_ex_opB_sel   <= 0;
-            de_ex_rs2       <= 0;
-              
-            de_ex_next_pc   <= 0;
-            de_ex_pc        <= 0; 
-            flushed         <= 0;
-        end     
-//        else if (pcStall && !stalled) begin
-//            de_ex_inst      <= de_inst;
-//            de_ex_rs2       <= rs2;
-             
-//            de_ex_opA_sel   <= opA_sel;
-//            de_ex_opB_sel   <= opB_sel;	       
-//            de_ex_next_pc   <= if_de_next_pc;
-//            de_ex_pc        <= if_de_pc;
-//        end
-        else if(stall) begin
-            de_ex_inst      <= de_ex_inst;      
-            de_ex_rs2       <= de_ex_rs2;
-            de_ex_pc        <= de_ex_pc;	       
-               
-            de_ex_opA_sel   <= de_ex_opA_sel;
-            de_ex_opB_sel   <= de_ex_opB_sel;
-            de_ex_next_pc   <= de_ex_next_pc;
-	    end
-	    else begin
+	always_ff @(posedge CLK) begin
+    de_ex_load <= de_load;
+        if (!pcStall && !stall) begin
+            // Assign used values
             de_ex_inst      <= de_inst;
             de_ex_rs2       <= rs2;
-             
-            de_ex_opA_sel   <= opA_sel;
-            de_ex_opB_sel   <= opB_sel;	       
-            de_ex_next_pc   <= if_de_next_pc;
             de_ex_pc        <= if_de_pc;
-	    end
-	end
+            de_ex_next_pc   <= if_de_next_pc;
+            de_ex_load      <= de_load;
+            de_ex_opA_sel   <= opA_sel;
+            de_ex_opB_sel   <= opB_sel;	
+            de_ex_ir               <= de_ir;
+       
+            // Assign control values
+            if (if_de_flushed || flush_de_ex) begin
+                de_ex_inst.regWrite <= 0;
+                de_ex_inst.memWrite <= 0;
+                de_ex_inst      <= 0;
+
+//            de_ex_opA_sel   <= 0;
+//            de_ex_opB_sel   <= 0;
+//            de_ex_rs2       <= 0;
+               
+//            de_ex_next_pc   <= 0;
+//            de_ex_pc        <= 0;
+            end
+        end
+    
+        if (stall) begin
+            stalled         <= 1;
+        end
+        else begin
+            stalled         <= 0;
+        end
+    end
 
 //==== Execute ======================================================
     
@@ -343,7 +319,7 @@ end
        .ZERO        (de_ex_inst.rs1),     
        .ONE         (rfIn),
        .TWO         (ex_mem_aluRes),
-       .THREE       (31'b0),
+       .THREE       (32'b0),
        .SEL         (ForwardA),
        .OUT         (HazardAout)
     );
@@ -353,7 +329,7 @@ end
        .ZERO        (de_ex_rs2),
        .ONE         (rfIn),
        .TWO         (ex_mem_aluRes),
-       .THREE       (31'b0),
+       .THREE       (32'b0),
        .SEL         (ForwardB),
        .OUT         (HazardBout)
     );
@@ -376,14 +352,16 @@ end
         .OUT        (aluBin)  
     );
 
-    always_ff @ (posedge CLK) begin  
-        begin
-            ex_mem_inst         <= de_ex_inst;
-            ex_mem_rs2          <= de_ex_rs2;
-            ex_mem_aluRes       <= aluResult;
-            ex_mem_next_pc      <= de_ex_next_pc;
-            ex_mem_HazardBout   <= HazardBout;
-        end
+    always_ff @ (posedge CLK) begin
+        if(!pcStall) begin
+            ex_mem_inst             <= de_ex_inst;
+            ex_mem_rs2              <= de_ex_rs2;
+            ex_mem_aluRes           <= aluResult;
+            ex_mem_next_pc          <= de_ex_next_pc;
+            ex_mem_HazardBout       <= HazardBout;
+            ex_mem_load             <= de_ex_load;
+        end 
+        else ex_mem_inst.memRead2   <= 1'b0;
     end
 
 //==== Memory ======================================================
@@ -451,9 +429,11 @@ end
     assign IOBUS_OUT    = ex_mem_rs2;
 
     always_ff @ (posedge CLK) begin
-        mem_wb_inst     <= ex_mem_inst;
-        mem_wb_next_pc  <= ex_mem_next_pc;
-        mem_wb_aluRes   <= ex_mem_aluRes;
+        if (!pcStall) begin
+            mem_wb_inst     <= ex_mem_inst;
+            mem_wb_next_pc  <= ex_mem_next_pc;
+            mem_wb_aluRes   <= ex_mem_aluRes;
+        end      
     end
     
 //==== Write Back ==================================================

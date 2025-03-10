@@ -1,0 +1,220 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Wed Mar  5 20:10:13 2025
+# Process ID: 20524
+# Current directory: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16984 C:\Users\sam\Documents\RISC-V-CPU\direct-mapped-RISC-V\direct-mapped-RISC-V.xpr
+# Log file: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/vivado.log
+# Journal file: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V\vivado.jou
+# Running On: spain, OS: Windows, CPU Frequency: 2688 MHz, CPU Physical cores: 14, Host memory: 34029 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg
+source Otter_TB.tcl
+restart
+run 10 us
+open_project C:/Users/sam/Documents/GitHub/pipelined-RISC-V/Pipelined_CPU_333.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/sam/Documents/GitHub/pipelined-RISC-V/3x3MatrixAttempt.wcfg
+source Otter_TB.tcl
+restart
+run 10 us
+current_project direct-mapped-RISC-V
+launch_simulation
+open_wave_config C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg
+source Otter_TB.tcl
+restart
+run 10 us
+current_project Pipelined_CPU_333
+launch_simulation
+open_wave_config C:/Users/sam/Documents/GitHub/pipelined-RISC-V/3x3MatrixAttempt.wcfg
+source Otter_TB.tcl
+current_project direct-mapped-RISC-V
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg
+source Otter_TB2.tcl
+restart
+run 10 us
+restart
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/CLK}} 
+restart
+run 10 us
+restart
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/pc}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/de_ex_pc}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/OPCODE}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/IR}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/Hazard_Detection_Unit/ForwardA}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/Hazard_Detection_Unit/ForwardB}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/ALU/RESULT}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/ALU/SRC_A}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/ALU/SRC_B}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/mem_wb_inst.rs1_addr}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/mem_wb_inst.rs2_addr}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/mem_wb_inst.rd_addr}} 
+current_project Pipelined_CPU_333
+current_sim simulation_4
+current_wave_config {3x3MatrixAttempt.wcfg}
+add_wave {{/Otter_TB/CPU/ex_mem_inst.rs1_addr}} 
+current_wave_config {3x3MatrixAttempt.wcfg}
+add_wave {{/Otter_TB/CPU/ex_mem_inst.rs2_addr}} 
+current_wave_config {3x3MatrixAttempt.wcfg}
+add_wave {{/Otter_TB/CPU/ex_mem_inst.rd_addr}} 
+current_project direct-mapped-RISC-V
+current_sim simulation_5
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/ex_mem_inst.rs1_addr}} {{/Otter_TB2/CPU/ex_mem_inst.rs2_addr}} {{/Otter_TB2/CPU/ex_mem_inst.rd_addr}} 
+restart
+run 10 us
+current_project Pipelined_CPU_333
+current_sim simulation_4
+restart
+run 10 us
+current_project direct-mapped-RISC-V
+current_sim simulation_5
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/CacheFSM/pc_stall}} 
+restart
+run 10 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/ex_mem_inst.regWrite}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/de_ex_inst.rs1_addr}} {{/Otter_TB2/CPU/de_ex_inst.rs2_addr}} {{/Otter_TB2/CPU/de_ex_inst.rd_addr}} 
+current_project Pipelined_CPU_333
+current_sim simulation_4
+current_wave_config {3x3MatrixAttempt.wcfg}
+add_wave {{/Otter_TB/CPU/de_ex_inst.rs1_addr}} {{/Otter_TB/CPU/de_ex_inst.rs2_addr}} {{/Otter_TB/CPU/de_ex_inst.rd_addr}} 
+save_wave_config {C:/Users/sam/Documents/GitHub/pipelined-RISC-V/3x3MatrixAttempt.wcfg}
+restart
+run 10 us
+current_project direct-mapped-RISC-V
+current_sim simulation_5
+restart
+run 10 us
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg}
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/stalled}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/stalled2}} 
+restart
+run 10 us
+relaunch_sim
+restart
+run 10 us
+relaunch_sim
+restart
+run 10 us
+relaunch_sim
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg}
+restart
+run 10 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/CU_DCDR/REG_WRITE}} 
+restart
+run 10 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/CU_DCDR/ALU_FUN}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/CU_DCDR/ALU_SRCA}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/CU_DCDR/ALU_SRCB}} 
+restart
+run 10 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/de_ex_inst.alu_fun}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/ex_mem_inst.alu_fun}} 
+restart
+run 10 us
+restart
+run 10 us
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/stall}} 
+current_wave_config {Otter_TB_behav.wcfg}
+add_wave {{/Otter_TB2/CPU/pcStall}} 
+restart
+run 10 us
+current_project Pipelined_CPU_333
+current_sim simulation_4
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+current_project direct-mapped-RISC-V
+current_sim simulation_5
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg}
+close_sim
+close_project
+save_wave_config {C:/Users/sam/Documents/GitHub/pipelined-RISC-V/3x3MatrixAttempt.wcfg}
+close_sim
