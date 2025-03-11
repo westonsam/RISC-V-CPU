@@ -26,7 +26,7 @@ module DirectMapCache(
     parameter BLOCK_SIZE = 8;
     parameter INDEX_SIZE = 4;
     parameter WORD_OFFSET_SIZE = 3;
-    parameter BYTE_OFFSET = 0;
+    parameter BYTE_OFFSET = 2;
     parameter TAG_SIZE = 32 - INDEX_SIZE - WORD_OFFSET_SIZE - BYTE_OFFSET;
     
     logic [31:0] data[NUM_BLOCKS-1:0][BLOCK_SIZE-1:0];
@@ -55,10 +55,10 @@ module DirectMapCache(
     assign hit = (validity && (cache_tag == pc_tag));
     assign miss = !hit;
     
-//    always_comb begin
-//        rd = 32'h00000013; //nop
-//        if(hit) rd = data[index][pc_offset];
-//    end
+    always_comb begin
+        rd = 32'h00000013; //nop
+        if(hit) rd = data[index][pc_offset];
+    end
     
     always_ff @(posedge CLK) begin // Was Negedge
         if(update) begin
@@ -72,7 +72,7 @@ module DirectMapCache(
             data[index][7]      <= w7;
             valid_bits[index]   <= 1'b1;
         end
-        rd = 32'h00000013; //nop
-        if(hit) rd = data[index][pc_offset];
+//        rd = 32'h00000013; //nop
+//        if(hit) rd = data[index][pc_offset];
     end
 endmodule

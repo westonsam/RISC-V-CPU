@@ -19,7 +19,8 @@ module InstructionMem(
     
     logic [31:0] ram[0:16383];
     
-    initial $readmemh("testAllWithHazards.mem", ram, 0, 16383);
+    initial $readmemh("comprehensive_test_all.mem", ram, 0, 16383);
+    
     // Memory outputs 8 words
     assign w0 = ram[a[31:2]];
     assign w1 = ram[a[31:2]+1];

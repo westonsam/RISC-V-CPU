@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Engineer:  Samuel Weston & Phillipe Bakhirev
+// Engineer:  Samuel Weston & Philippe Bakhirev
 // Module Name: PIPELINED_OTTER_CPU WITH HAZARD HANDLING AND DATA FORWARDING
 // Create Date: 02/27/2025
 //////////////////////////////////////////////////////////////////////////////////
@@ -60,6 +60,7 @@ module OTTER_MCU(input CLK,
     logic   [31:0] pc, B_type, J_type, rs2;
     logic   [31:0] if_de_pc;
     logic   [31:0] if_de_next_pc;
+    logic   [31:0] if_de_IR;
     logic   [1:0]  ForwardA, ForwardB;
     logic          br_lt, br_eq, br_ltu;
     logic          pcWrite, memRead1;
@@ -85,9 +86,9 @@ module OTTER_MCU(input CLK,
     logic          stall, stalled, stalled2, flush, flushed;
     
     // CACHE
-    wire [31:0] w0, w1, w2, w3, w4, w5, w6, w7;
-    wire cacheHit, cacheMiss, fsmRST, update, pcStall;
-    wire [31:0] cacheIM, memoryIM, imOut;
+    logic [31:0] w0, w1, w2, w3, w4, w5, w6, w7;
+    logic cacheHit, cacheMiss, fsmRST, update, cacheStall, cacheStalled;
+    logic [31:0] cacheIM, memoryIM, imOut;
               
 //    assign pcWrite = (!stall && (!pcStall || (BR_EN) ) );    //dont update the PC while we are stalling for new DOUT1
 
@@ -106,57 +107,85 @@ module OTTER_MCU(input CLK,
        .PC_OUT     (pc),
        .PC_OUT_INC (next_pc)
     );
+     
+    // Insantiate 8 Word Cache Loader
+    InstructionMem OneTo8Inst(
+        .a(pc), //address
+        .w0(w0),
+        .w1(w1),
+        .w2(w2),
+        .w3(w3),
+        .w4(w4), 
+        .w5(w5),
+        .w6(w6),
+        .w7(w7)
+    );
+    
+    // Instantiate Cache FSM
+    CacheFSM CacheFSM(
+        .hit(cacheHit), 
+        .miss(cacheMiss), 
+        .CLK(CLK), 
+        .RST(fsmRST), 
+        .update(update), 
+        .pc_stall(cacheStall)
+    );
+    
+    // Instantiate Main Cache
+    DirectMapCache Cache(
+            .PC(pc),
+            .CLK(CLK),
+            .update(update),
+            .w0(w0),
+            .w1(w1),
+            .w2(w2), 
+            .w3(w3),
+            .w4(w4), 
+            .w5(w5),
+            .w6(w6), 
+            .w7(w7),
+            .rd(IR), 
+            .hit(cacheHit), 
+            .miss(cacheMiss)
+    );
 //    always_comb begin
-//        if (!stall && (!pcStall || (BR_EN) )) begin
-//            pcWrite <= 1'b1;
-//            if_de_pc        <= pc;
-//            if_de_next_pc   <= next_pc;
-//        end
+//        if(stall || pcStall) begin
+//            stalled = 1'b1;
+//            pcWrite = 1'b0;
+//            end
 //        else begin
-//            pcWrite <= 1'b0;
-//            if_de_pc <= if_de_pc;
-//            if_de_next_pc <= if_de_next_pc; 
-//        end
+//            stalled = 1'b0;
+//            pcWrite = 1'b1;
+//            end
 //    end
-
+    assign pcWrite  = ~(stall || cacheStall);
     always_ff @(posedge CLK) begin
-        if (stall || pcStall) begin
-            pcWrite         <= 1'b0;
+        cacheStalled   <= cacheStall;
+        if (stall || cacheStall) begin
+            if_de_IR        <= if_de_IR;
+            if_de_pc        <= if_de_pc;
+            if_de_next_pc   <= if_de_next_pc;
+//            pcWrite         <= 1'b0;
+            stalled         <= 1'b1;
         end
         else begin
+            if_de_IR        <= IR;
             if_de_pc        <= pc;
             if_de_next_pc   <= next_pc;
-            pcWrite         <= 1'b1;
-        end
-    end  
-    
-    always_ff @(posedge CLK) begin
-        if(!stall) begin
+//            pcWrite         <= 1'b1;
             stalled         <= 1'b0;
         end
-        else if(stall) begin
-            stalled         <=1'b1;
-        end   
-    end
-
-    always_ff @(posedge CLK) begin
-        if (stalled) begin
-            stalled2 <= 1'b1;
-        end
-        else begin
-            stalled2 <=1'b0;
-        end
-end    
+    end     
 
 //==== Decode ===========================================
     
     opcode_t OPCODE;
-    assign OPCODE = opcode_t'(IR[6:0]);
-    assign de_inst.rs1_addr=IR[19:15];
-    assign de_inst.rs2_addr=IR[24:20];
-    assign de_inst.rd_addr=IR[11:7];
+    assign OPCODE = opcode_t'(if_de_IR[6:0]);
+    assign de_inst.rs1_addr=if_de_IR[19:15];
+    assign de_inst.rs2_addr=if_de_IR[24:20];
+    assign de_inst.rd_addr=if_de_IR[11:7];
     assign de_inst.opcode=OPCODE;
-    assign de_inst.mem_type=IR[14:12];
+    assign de_inst.mem_type=if_de_IR[14:12];
 
 //==== Hazard Detection ===========================================
    
@@ -211,9 +240,9 @@ end
  
     // Instantiate Decoder
     CU_DCDR CU_DCDR (
-        .IR_30      (IR[30]),
+        .IR_30      (if_de_IR[30]),
         .IR_OPCODE  (OPCODE),
-        .IR_FUNCT   (IR[14:12]),
+        .IR_FUNCT   (if_de_IR[14:12]),
         .BR_EQ      (br_eq),       
         .BR_LT      (br_lt),
         .BR_LTU     (br_ltu),
@@ -228,7 +257,7 @@ end
     
     // Instantiate Immediate Generator
     ImmediateGenerator ImmGen(
-        .IR     (IR[31:7]),
+        .IR     (if_de_IR[31:7]),
         .U_TYPE (de_inst.U_immed),
         .I_TYPE (de_inst.I_immed),
         .S_TYPE (de_inst.S_immed),
@@ -239,7 +268,7 @@ end
     // Instantiate Register
     REG_FILE RegFile(
         .CLK    (CLK),
-        .EN     (mem_wb_inst.regWrite),
+        .EN     (mem_wb_inst.regWrite & !cacheStalled),
         .ADR1   (de_inst.rs1_addr),
         .ADR2   (de_inst.rs2_addr),
         .WA     (mem_wb_inst.rd_addr),
@@ -248,8 +277,21 @@ end
         .RS2    (rs2)
     );
 
+    always_ff @(posedge CLK) begin
+        if (stalled) begin
+            stalled2 <= 1'b1;
+        end
+        else begin
+            stalled2 <=1'b0;
+        end
+    end 
+    
 	always_ff @ (posedge CLK) begin
-	    if(flush) begin
+	    if(stall || cacheStall) begin // CHECK BR_EN SIGNAL TO SEE IF NEEDED
+            de_ex_inst.memWrite      <= 1'b0; 
+            de_ex_inst.regWrite      <= 1'b0; 
+            end 
+	    else if(flush) begin
             de_ex_inst      <= 0;
 
             de_ex_opA_sel   <= 0;
@@ -270,16 +312,7 @@ end
             de_ex_next_pc   <= 0;
             de_ex_pc        <= 0; 
             flushed         <= 0;
-        end     
-        else if(stall || (pcStall && !BR_EN)) begin
-            de_ex_inst      <= de_ex_inst;      
-            de_ex_rs2       <= de_ex_rs2;
-            de_ex_pc        <= de_ex_pc;	       
-               
-            de_ex_opA_sel   <= de_ex_opA_sel;
-            de_ex_opB_sel   <= de_ex_opB_sel;
-            de_ex_next_pc   <= de_ex_next_pc;
-	    end
+        end       
 	    else begin
             de_ex_inst      <= de_inst;
             de_ex_rs2       <= rs2;
@@ -328,7 +361,7 @@ end
        .ZERO        (de_ex_inst.rs1),     
        .ONE         (rfIn),
        .TWO         (ex_mem_aluRes),
-       .THREE       (31'b0),
+       .THREE       (32'b0),
        .SEL         (ForwardA),
        .OUT         (HazardAout)
     );
@@ -338,7 +371,7 @@ end
        .ZERO        (de_ex_rs2),
        .ONE         (rfIn),
        .TWO         (ex_mem_aluRes),
-       .THREE       (31'b0),
+       .THREE       (32'b0),
        .SEL         (ForwardB),
        .OUT         (HazardBout)
     );
@@ -363,56 +396,17 @@ end
 
     always_ff @ (posedge CLK) begin  
         begin
+        if (!cacheStall) begin
             ex_mem_inst         <= de_ex_inst;
             ex_mem_rs2          <= de_ex_rs2;
             ex_mem_aluRes       <= aluResult;
             ex_mem_next_pc      <= de_ex_next_pc;
             ex_mem_HazardBout   <= HazardBout;
+            end
         end
     end
 
 //==== Memory ======================================================
-     
-    // Insantiate 8 Word Cache Loader
-    InstructionMem OneTo8Inst(
-        .a(pc), //address
-        .w0(w0),
-        .w1(w1),
-        .w2(w2),
-        .w3(w3),
-        .w4(w4), 
-        .w5(w5),
-        .w6(w6),
-        .w7(w7)
-    );
-    
-    // Instantiate Cache FSM
-    CacheFSM CacheFSM(
-        .hit(cacheHit), 
-        .miss(cacheMiss), 
-        .CLK(CLK), 
-        .RST(fsmRST), 
-        .update(update), 
-        .pc_stall(pcStall)
-    );
-    
-    // Instantiate Main Cache
-    DirectMapCache Cache(
-            .PC(pc),
-            .CLK(CLK),
-            .update(update),
-            .w0(w0),
-            .w1(w1),
-            .w2(w2), 
-            .w3(w3),
-            .w4(w4), 
-            .w5(w5),
-            .w6(w6), 
-            .w7(w7),
-            .rd(IR), 
-            .hit(cacheHit), 
-            .miss(cacheMiss)
-    );
     
     // Instantiate Main Memory
     OTTER_mem_byte Memory (
@@ -436,9 +430,11 @@ end
     assign IOBUS_OUT    = ex_mem_rs2;
 
     always_ff @ (posedge CLK) begin
+        if (!cacheStall) begin
         mem_wb_inst     <= ex_mem_inst;
         mem_wb_next_pc  <= ex_mem_next_pc;
         mem_wb_aluRes   <= ex_mem_aluRes;
+        end
     end
     
 //==== Write Back ==================================================
