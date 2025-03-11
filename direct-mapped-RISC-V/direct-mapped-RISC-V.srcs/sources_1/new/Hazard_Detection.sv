@@ -20,6 +20,7 @@ module Hazard_Detection(
     input logic de_rs2_used,
     input logic ex_rs1_used,
     input logic ex_rs2_used,
+    input logic hold_cntrl_haz,
     output logic [1:0] fsel1,
     output logic [1:0] fsel2,
     output logic load_use_haz,
@@ -55,7 +56,7 @@ always_comb begin
         load_use_haz = 1'b0;
     
     //Control hazards--jal,jalr,branchh
-    if (pc_source != 2'b00) begin
+    if (pc_source != 2'b00 && !hold_cntrl_haz) begin
         control_haz = 1'b1;
     end
     else begin

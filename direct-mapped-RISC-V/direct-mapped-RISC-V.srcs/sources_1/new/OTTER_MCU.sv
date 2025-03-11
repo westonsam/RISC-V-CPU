@@ -68,16 +68,17 @@ module OTTER_MCU(
     .PC_OUT(pc_if));
     
     logic [31:0] pc_de;
-    logic ld_use_hz, cntrl_haz, hold_cntrl_haz;
+    logic ld_use_hz, cntrl_haz, hold_cntrl_haz, two_cntrl_haz;
+
     always_ff@(posedge CLK) begin
         if(!ld_use_hz)
             pc_de <= pc_if;
             
         hold_cntrl_haz <= cntrl_haz;
     end
-    
-    
-    
+    always_ff@(posedge CLK) 
+        two_cntrl_haz <= hold_cntrl_haz;
+       
     assign pcWrite = !ld_use_hz;
     assign memRead1 = !ld_use_hz;
     
@@ -188,6 +189,7 @@ module OTTER_MCU(
     .de_rs2_used(decode_t.rs2_used),
     .ex_rs1_used(execute_t.rs1_used),
     .ex_rs2_used(execute_t.rs2_used),
+    .hold_cntrl_haz(hold_cntrl_haz),
     .fsel1(fsel1),
     .fsel2(fsel2),
     .load_use_haz(ld_use_hz),
@@ -229,15 +231,13 @@ module OTTER_MCU(
     .RESULT(alu_res));
     
     //----------BRANCH-----------//
-//    BCG BranchUnit(.IR(execute_t.ir),
-//    .RS1(frs1_ex),
-//    .RS2(frs2_ex),
-//    .PC_SOURCE(pcSource));
     BCG BCG(
         .RS1        (frs1_ex),
         .RS2        (frs2_ex),
         .func3      (execute_t.mem_type),
         .opcode     (execute_t.opcode),
+        .hold_cntrl_haz(hold_cntrl_haz),
+        .two_cntrl_haz(two_cntrl_haz),
         .PC_SOURCE  (pcSource)
 //        .branch     (BR_EN)
     );

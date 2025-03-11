@@ -10,6 +10,8 @@ module BCG(
     input logic [31:0] RS2,
     input logic [2:0]func3,
     input logic [6:0]opcode,
+    input logic hold_cntrl_haz,
+    input logic two_cntrl_haz,
     output logic [1:0]PC_SOURCE,
     output logic branch
     );
@@ -23,6 +25,7 @@ module BCG(
     always_comb begin
     branch = 1'b0; 
     PC_SOURCE = 3'b000;
+        if(!hold_cntrl_haz && !two_cntrl_haz) begin
         case (opcode)
             7'b1101111: begin                       // JAL
                 PC_SOURCE = 3'b011;
@@ -90,5 +93,6 @@ module BCG(
                endcase
            end
         endcase
+        end
     end
 endmodule
