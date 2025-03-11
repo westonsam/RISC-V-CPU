@@ -9,7 +9,7 @@ module PC(
     input logic CLK,
     input logic RST,
     input logic PC_WRITE,
-    input logic [2:0] PC_SEL,
+    input logic [1:0] PC_SEL,
     input logic [31:0] JALR,
     input logic [31:0] BRANCH,
     input logic [31:0] JAL,

@@ -10,7 +10,7 @@ module BCG(
     input logic [31:0] RS2,
     input logic [2:0]func3,
     input logic [6:0]opcode,
-    output logic [2:0]PC_SOURCE,
+    output logic [1:0]PC_SOURCE,
     output logic branch
     );
      

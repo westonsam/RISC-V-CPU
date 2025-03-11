@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Engineer: Samuel Weston & Phillipe Bakhirev
+// Engineer: Samuel Weston & Philippe Bakhirev
 // Module Name: CU_DCDR
 // Create Date: 02/27/2025
 //////////////////////////////////////////////////////////////////////////////////
@@ -9,16 +9,13 @@ module CU_DCDR(
     input logic IR_30,
     input logic [6:0] IR_OPCODE,
     input logic [2:0] IR_FUNCT,
-    input logic BR_EQ,
-    input logic BR_LT,
-    input logic BR_LTU,
     output logic [3:0] ALU_FUN,
     output logic ALU_SRCA,
     output logic [1:0] ALU_SRCB,
     output logic [1:0] RF_WR_SEL,
     output logic REG_WRITE,
     output logic MEM_WRITE,
-    output logic MEM_READ_2
+    output logic MEM_READ2
     );
     
     always_comb begin
@@ -30,7 +27,7 @@ module CU_DCDR(
         REG_WRITE = 1'b0;
         
         MEM_WRITE = 1'b0;
-        MEM_READ_2 = 1'b0;
+        MEM_READ2 = 1'b0;
 
         case (IR_OPCODE)
             7'b0010111: begin   // AUIPC
@@ -55,7 +52,7 @@ module CU_DCDR(
                 ALU_SRCB    = 2'b01;
                 RF_WR_SEL   = 2'b10;
                 REG_WRITE   = 1'b1;
-                MEM_READ_2  = 1'b1;
+                MEM_READ2  = 1'b1;
             end
             
             7'b0110111: begin   // LUI

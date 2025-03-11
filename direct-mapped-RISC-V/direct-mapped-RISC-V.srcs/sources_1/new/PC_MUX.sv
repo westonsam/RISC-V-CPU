@@ -12,7 +12,7 @@ module PC_MUX(
     input logic [31:0] JAL,
     input logic [31:0] MTVEC,
     input logic [31:0] MEPC,
-    input logic [2:0] PC_SEL,
+    input logic [1:0] PC_SEL,
     output logic [31:0] PC_MUX_OUT
     );
     

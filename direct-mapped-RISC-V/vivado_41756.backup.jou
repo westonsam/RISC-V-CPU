@@ -1,0 +1,54 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Mar 10 19:34:14 2025
+# Process ID: 41756
+# Current directory: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24120 C:\Users\sam\Documents\RISC-V-CPU\direct-mapped-RISC-V\direct-mapped-RISC-V.xpr
+# Log file: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/vivado.log
+# Journal file: C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V\vivado.jou
+# Running On: spain, OS: Windows, CPU Frequency: 2688 MHz, CPU Physical cores: 14, Host memory: 34029 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.xpr
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg
+source Otter_TB.tcl
+update_compile_order -fileset sources_1
+relaunch_sim
+update_compile_order -fileset sources_1
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg}
+close_sim
+launch_simulation
+launch_simulation
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+launch_simulation
+open_wave_config C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg
+source Otter_TB.tcl
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/Otter_TB/CPU/pc_if}} 
+current_wave_config {Untitled 1}
+add_wave {{/Otter_TB/CPU/pc_inc_if}} 
+current_wave_config {Untitled 1}
+add_wave {{/Otter_TB/CPU/pc_de}} 
+restart
+run 10 us
+current_wave_config {Untitled 1}
+add_wave {{/Otter_TB/clk}} 
+restart
+run 10 us
+set_property is_enabled false [get_files  C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/CacheFSM.sv]
+set_property is_enabled false [get_files  C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/DirectMapCache.sv]
+set_property is_enabled false [get_files  C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/direct-mapped-RISC-V.srcs/sources_1/new/InstructionMem.sv]
+save_wave_config {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav1.wcfg}
+add_files -fileset sim_1 -norecurse C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav1.wcfg
+set_property xsim.view {C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav.wcfg C:/Users/sam/Documents/RISC-V-CPU/direct-mapped-RISC-V/Otter_TB_behav1.wcfg} [get_filesets sim_1]
+close_sim
