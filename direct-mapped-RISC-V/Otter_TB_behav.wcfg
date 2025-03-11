@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="822.333 ns"></ZoomStartTime>
-      <ZoomEndTime time="937.734 ns"></ZoomEndTime>
-      <Cursor1Time time="865.033 ns"></Cursor1Time>
+      <ZoomStartTime time="336.367 ns"></ZoomStartTime>
+      <ZoomEndTime time="472.727 ns"></ZoomEndTime>
+      <Cursor1Time time="430.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="223"></NameColumnWidth>
+      <NameColumnWidth column_width="273"></NameColumnWidth>
       <ValueColumnWidth column_width="146"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="20" />
+   <WVObjectSize size="25" />
    <wvobject fp_name="/Otter_TB/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -28,10 +28,6 @@
    <wvobject fp_name="/Otter_TB/CPU/pc" type="array">
       <obj_property name="ElementShortName">pc[31:0]</obj_property>
       <obj_property name="ObjectShortName">pc[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/if_de_pc" type="array">
-      <obj_property name="ElementShortName">if_de_pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">if_de_pc[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/Otter_TB/CPU/de_ex_pc" type="array">
       <obj_property name="ElementShortName">de_ex_pc[31:0]</obj_property>
@@ -41,39 +37,61 @@
       <obj_property name="ElementShortName">OPCODE[6:0]</obj_property>
       <obj_property name="ObjectShortName">OPCODE[6:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/cacheStall" type="logic">
-      <obj_property name="ElementShortName">cacheStall</obj_property>
-      <obj_property name="ObjectShortName">cacheStall</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/stall" type="logic">
-      <obj_property name="ElementShortName">stall</obj_property>
-      <obj_property name="ObjectShortName">stall</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/CacheFSM/PS" type="array">
-      <obj_property name="ElementShortName">PS[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PS[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/RegFile/ram[1]" type="array">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">[1][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[1][31:0]</obj_property>
-      <obj_property name="label">ra</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/de_ex_inst.memWrite" type="logic">
-      <obj_property name="ElementShortName">.memWrite</obj_property>
-      <obj_property name="ObjectShortName">.memWrite</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/de_ex_inst.regWrite" type="logic">
-      <obj_property name="ElementShortName">.regWrite</obj_property>
-      <obj_property name="ObjectShortName">.regWrite</obj_property>
+   <wvobject fp_name="/Otter_TB/CPU/IR" type="array">
+      <obj_property name="ElementShortName">IR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">IR[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/Otter_TB/CPU/PC/PC_WRITE" type="logic">
       <obj_property name="ElementShortName">PC_WRITE</obj_property>
       <obj_property name="ObjectShortName">PC_WRITE</obj_property>
    </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/stalled" type="logic">
-      <obj_property name="ElementShortName">stalled</obj_property>
-      <obj_property name="ObjectShortName">stalled</obj_property>
+   <wvobject fp_name="/Otter_TB/CPU/CacheFSM/hit" type="logic">
+      <obj_property name="ElementShortName">hit</obj_property>
+      <obj_property name="ObjectShortName">hit</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/CacheFSM/miss" type="logic">
+      <obj_property name="ElementShortName">miss</obj_property>
+      <obj_property name="ObjectShortName">miss</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/stall" type="logic">
+      <obj_property name="ElementShortName">stall</obj_property>
+      <obj_property name="ObjectShortName">stall</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/CacheFSM/pc_stall" type="logic">
+      <obj_property name="ElementShortName">pc_stall</obj_property>
+      <obj_property name="ObjectShortName">pc_stall</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/CacheFSM/PS" type="array">
+      <obj_property name="ElementShortName">PS[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PS[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Cache/validity" type="logic">
+      <obj_property name="ElementShortName">validity</obj_property>
+      <obj_property name="ObjectShortName">validity</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Cache/update" type="logic">
+      <obj_property name="ElementShortName">update</obj_property>
+      <obj_property name="ObjectShortName">update</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/RegFile/EN" type="logic">
+      <obj_property name="ElementShortName">EN</obj_property>
+      <obj_property name="ObjectShortName">EN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/BAG/BRANCH" type="array">
+      <obj_property name="ElementShortName">BRANCH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">BRANCH[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/BAG/JALR" type="array">
+      <obj_property name="ElementShortName">JALR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">JALR[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/BAG/JAL" type="array">
+      <obj_property name="ElementShortName">JAL[31:0]</obj_property>
+      <obj_property name="ObjectShortName">JAL[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/PC/PC_SEL" type="array">
+      <obj_property name="ElementShortName">PC_SEL[2:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_SEL[2:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/Otter_TB/CPU/flush" type="logic">
       <obj_property name="ElementShortName">flush</obj_property>
@@ -83,24 +101,24 @@
       <obj_property name="ElementShortName">flushed</obj_property>
       <obj_property name="ObjectShortName">flushed</obj_property>
    </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/Cache/validity" type="logic">
-      <obj_property name="ElementShortName">validity</obj_property>
-      <obj_property name="ObjectShortName">validity</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/Cache/pc_tag" type="array">
-      <obj_property name="ElementShortName">pc_tag[22:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_tag[22:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/Cache/cache_tag" type="array">
-      <obj_property name="ElementShortName">cache_tag[22:0]</obj_property>
-      <obj_property name="ObjectShortName">cache_tag[22:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/Otter_TB/CPU/Cache/index" type="array">
       <obj_property name="ElementShortName">index[3:0]</obj_property>
       <obj_property name="ObjectShortName">index[3:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Otter_TB/CPU/Cache/tags[6]" type="array">
-      <obj_property name="ElementShortName">[6][22:0]</obj_property>
-      <obj_property name="ObjectShortName">[6][22:0]</obj_property>
+   <wvobject fp_name="/Otter_TB/CPU/Cache/pc_offset" type="array">
+      <obj_property name="ElementShortName">pc_offset[2:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_offset[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/w4" type="array">
+      <obj_property name="ElementShortName">w4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">w4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Cache/data[15][4]" type="array">
+      <obj_property name="ElementShortName">[4][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Otter_TB/CPU/Cache/data[15][5]" type="array">
+      <obj_property name="ElementShortName">[5][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[5][31:0]</obj_property>
    </wvobject>
 </wave_config>
